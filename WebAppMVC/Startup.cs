@@ -39,6 +39,7 @@ namespace WebAppMVC
                     setup.ClientSecret = "webappmvc";
                     setup.SaveTokens = true;
                     setup.ResponseType = "code";
+                    setup.Scope.Add("profile");
                 });
         }
 
