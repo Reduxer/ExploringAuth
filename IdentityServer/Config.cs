@@ -49,7 +49,8 @@ namespace IdentityServer
                     ClientSecrets = { new Secret("webappmvc".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris = new[] { "https://localhost:44353/signin-oidc" },
-                    AllowedScopes = { "ApiOne", "ApiTwo", IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile }
+                    AllowedScopes = { "ApiOne", "ApiTwo", IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile },
+                    RequireConsent = false
                 }
             };
     }

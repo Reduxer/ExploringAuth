@@ -31,6 +31,7 @@ namespace WebAppMVC
                 setup.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 setup.DefaultChallengeScheme = "oidc";
             })
+                .AddCookie()
                 .AddOpenIdConnect("oidc", setup =>
                 {
                     setup.Authority = "https://localhost:44365";
@@ -58,6 +59,8 @@ namespace WebAppMVC
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
