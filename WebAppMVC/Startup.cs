@@ -35,10 +35,12 @@ namespace WebAppMVC
                 .AddOpenIdConnect("oidc", setup =>
                 {
                     setup.Authority = "https://localhost:44365";
+                    setup.SignedOutCallbackPath = "/home/index";
                     setup.ClientId = "webappmvc";
                     setup.ClientSecret = "webappmvc";
                     setup.SaveTokens = true;
                     setup.ResponseType = "code";
+                    setup.Scope.Add("CustomScope");
                     setup.Scope.Add("profile");
                 });
         }

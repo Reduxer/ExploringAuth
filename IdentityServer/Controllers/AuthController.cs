@@ -3,6 +3,7 @@ using IdentityServer.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using IdentityServer4.Services;
 
 namespace IdentityServer.Controllers
 {
@@ -10,11 +11,13 @@ namespace IdentityServer.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IIdentityServerInteractionService _identityServerInteractionService;
 
-        public AuthController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AuthController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, IIdentityServerInteractionService identityServerInteractionService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _identityServerInteractionService = identityServerInteractionService;
         }
 
         [HttpGet]
@@ -72,6 +75,21 @@ namespace IdentityServer.Controllers
             await _signInManager.SignInAsync(user, false);
 
             return Redirect(registerVM.ReturnUrl);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout(string logoutId)
+        {
+            await _signInManager.SignOutAsync();
+
+            var logoutRequest = await _identityServerInteractionService.GetLogoutContextAsync(logoutId);
+
+            if (string.IsNullOrEmpty(logoutRequest?.PostLogoutRedirectUri))
+            {
+                return LocalRedirect("/");
+            }
+
+            return Redirect(logoutRequest.PostLogoutRedirectUri);
         }
     }
 }

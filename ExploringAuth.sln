@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32014.148
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic", "Basic\Basic.csproj", "{D4C1CCDF-1153-4679-8D1A-4E068B072B34}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingIdentity", "UsingIdentity\UsingIdentity.csproj", "{E87B43ED-081B-44AF-BA12-E48DD7ED54F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testlibman", "testlibman\testlibman.csproj", "{8D19B31A-F611-45E1-9572-E6155A15B0C9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "OAuth\Server\Server.csproj", "{1BF97BED-3F22-4B88-BDBD-C70AEE7094C6}"
 EndProject
@@ -23,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiOne", "ApiOne\ApiOne.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTwo", "ApiTwo\ApiTwo.csproj", "{FB2F89A3-A6B2-4F81-85C0-5E21C1F4AFAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{F0314D97-6972-4E57-8DA8-788252159EE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{F0314D97-6972-4E57-8DA8-788252159EE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{E87B43ED-081B-44AF-BA12-E48DD7ED54F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E87B43ED-081B-44AF-BA12-E48DD7ED54F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E87B43ED-081B-44AF-BA12-E48DD7ED54F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D19B31A-F611-45E1-9572-E6155A15B0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D19B31A-F611-45E1-9572-E6155A15B0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D19B31A-F611-45E1-9572-E6155A15B0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D19B31A-F611-45E1-9572-E6155A15B0C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1BF97BED-3F22-4B88-BDBD-C70AEE7094C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1BF97BED-3F22-4B88-BDBD-C70AEE7094C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BF97BED-3F22-4B88-BDBD-C70AEE7094C6}.Release|Any CPU.ActiveCfg = Release|Any CPU

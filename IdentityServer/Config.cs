@@ -11,6 +11,11 @@ namespace IdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResource()
+                {
+                    Name = "CustomScope",
+                     UserClaims = { "uclaim" }
+                }
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -49,7 +54,8 @@ namespace IdentityServer
                     ClientSecrets = { new Secret("webappmvc".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris = new[] { "https://localhost:44353/signin-oidc" },
-                    AllowedScopes = { "ApiOne", "ApiTwo", IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile },
+                    PostLogoutRedirectUris = new[] { "https://localhost:44353/" },
+                    AllowedScopes = { "CustomScope", "ApiOne", "ApiTwo", IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile },
                     RequireConsent = false
                 }
             };

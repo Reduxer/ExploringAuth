@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAppMVC.Models;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace WebAppMVC.Controllers
 {
@@ -30,8 +32,12 @@ namespace WebAppMVC.Controllers
         }
 
         [Authorize]
-        public IActionResult Secret()
+        public async Task<IActionResult> Secret()
         {
+            var jth = new JwtSecurityTokenHandler();
+            var idToken = await HttpContext.GetTokenAsync("id_token");
+            var _idToken = jth.ReadJwtToken(idToken);
+
             return View();
         }
 

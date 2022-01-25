@@ -11,7 +11,13 @@ namespace IdentityServer.Data.Seeders
             using var serviceScope = serviceProvider.CreateScope();
 
             var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            userManager.CreateAsync(new IdentityUser("bob"), "Bob123").GetAwaiter().GetResult();
+
+            var user = userManager.FindByNameAsync("bob").GetAwaiter().GetResult();
+
+            if(user is null)
+            {
+                userManager.CreateAsync(new IdentityUser("bob"), "Bob123").GetAwaiter().GetResult();
+            }
         }
     }
 }

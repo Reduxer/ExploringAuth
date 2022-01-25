@@ -8,12 +8,14 @@ namespace WebAppMVC.Controllers
 {
     public class AuthController : Controller
     {
-        [Authorize]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            await HttpContext.SignOutAsync("oidc");
-            return LocalRedirect("/");
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
+
+            return SignOut("oidc", CookieAuthenticationDefaults.AuthenticationScheme);
         }
     }
 }
