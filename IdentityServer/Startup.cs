@@ -10,16 +10,20 @@ using System.Reflection;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using System.Linq;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IdentityServer
 {
     public class Startup
     {
         public IConfiguration Configuration { get; private set; }
+        public IWebHostEnvironment WebHostEnvironment { get; private set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             Configuration = configuration;
+            WebHostEnvironment = webHostEnvironment;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -42,9 +46,12 @@ namespace IdentityServer
                 .AddDefaultTokenProviders();
             
             var assembly = typeof(Startup).Assembly.GetName().Name;
+            var certFilename = Path.Combine(WebHostEnvironment.ContentRootPath, "IdentityServerCert.pfx");
+
+            var certificate = new X509Certificate2(certFilename, "ExploringIdentityServer");
 
             services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
+                .AddSigningCredential(certificate)
                 .AddAspNetIdentity<IdentityUser>()
                 .AddConfigurationStore(setup => 
                 {
