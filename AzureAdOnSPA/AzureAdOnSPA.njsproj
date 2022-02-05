@@ -32,9 +32,6 @@
     <Content Include=".env">
       <SubType>Code</SubType>
     </Content>
-    <Content Include=".env.development">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
     <Content Include="src\App.vue" />
@@ -52,7 +49,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dist\" />
     <Folder Include="public\" />
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
